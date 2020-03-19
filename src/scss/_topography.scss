@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600|Poppins:300,400,500,600|Raleway:600&display=swap');
+
+.title {
+  &-h1 {
+    @include text-style(46px,  62px, $white, "Montserrat", 600);
+
+    @include for-phone-down {
+      font-size: 40px;
+    }
+
+    @include for-small-phone-down {
+      font-size: 35px;
+    }
+
+    &-contact_us {
+      @include text-style(39px,  62px, $mine-shaft, "Raleway", 600);
+    }
+  }
+  &-h2 {
+    @include  text-style(32px, 24px, $white, "Montserrat", 600);
+
+    @include for-small-phone-down {
+      line-height: 36px;
+    }
+  }
+  &-h3 {
+    &-scorpion-Montserrat_bolder {
+      @include text-style(36px, 36px, $scorpion, "Montserrat", 500);
+    }
+    &-white-Montserrat_bolder {
+      @include text-style(36px, 36px, $white, "Montserrat", 500);
+    }
+  }
+}
+
+.text {
+  &-fs_20-lh_36 {
+    &-white-Poppins_regular {
+      @include text-style(20px,  36px, $white, "Poppins", 400);
+    }
+
+    &-dove_gray-Poppins_regular {
+      @include text-style(20px,  36px, $dove-gray, "Poppins", 400);
+    }
+  }
+
+  &-fs_13-lh_normal-white-Poppins_regular {
+    @include text-style(13px, normal, $white, "Poppins", 400);
+  }
+
+  &-fs_15-lh_25-mine_shaft-Poppins_light {
+    @include text-style(15px, 25px, $mine-shaft, "Poppins", 300);
+  }
+
+  &-fs_19-lh_normal-white-Poppins_bolder {
+    @include text-style(19px, normal, $white, "Poppins", 500)
+  }
+}
+
+.link-store {
+  @include flex-position-items(flex, center, center);
+  @include button(230px, 81px, 40px, $ebony-clay);
+
+  .promo__icon {
+    font-size: 2em;
+    color: white;
+    margin-right: 25px;
+  }
+
+  div {
+    @include flex-position-items(flex, center, start);
+    flex-direction: column;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  &.apple {
+    margin-right: 18px;
+
+    @include for-small-phone-down {
+      margin-right: 0;
+      margin-bottom: 25px;
+    }
+  }
+}
+

@@ -1,0 +1,57 @@
+footer {
+  background: $big-stone;
+
+  .max-width {
+    @include flex-position-items(flex, space-between, center);
+    padding-top: 125px;
+    padding-bottom: 125px;
+
+    @include for-small-laptop-down {
+      padding-top: 75px;
+      padding-bottom: 75px;
+      flex-direction: column;
+    }
+  }
+
+  span {
+    @include text-style(16px,  21px, $white, "Montserrat", 400);
+
+    @include for-small-phone-down {
+      text-align: center;
+    }
+  }
+
+  .social-link {
+    @include for-small-laptop-down {
+      margin-top: 25px;
+    }
+
+    @include for-small-phone-down {
+      @include flex-position-items(flex, space-between, center);
+      width: 100%;
+    }
+  }
+
+  a {
+    color: $white;
+    font-size: 2rem;
+    transition: color .2s ease;
+    margin-right: 45px;
+
+    @include for-small-laptop-down {
+      margin-right: 25px;
+    }
+
+    @include for-small-phone-down {
+      margin-right: 0;
+    }
+
+    &:hover {
+      color: $royal-blue;
+    }
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+}

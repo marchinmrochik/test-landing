@@ -1,0 +1,163 @@
+header {
+  position: absolute;
+  width: 100%;
+  top: 45px;
+
+  @media (min-width: 1250px) {
+    top: 59px;
+  }
+
+  @include for-small-laptop-down {
+    top: 10px;
+  }
+
+  .header-block {
+    @include flex-position-items(flex, space-between, baseline);
+
+    @include for-desktop-down {
+      padding: 0 15px;
+    }
+
+    @include for-small-laptop-down {
+      align-items: center;
+    }
+
+    nav {
+      font-family: "Poppins", serif;
+      display: flex;
+      align-items: end;
+
+      .logo-link {
+        font-size: 34px;
+        line-height: 49px;
+        color: $white!important;
+        font-weight: 600;
+        margin-right: 50px;
+
+        @include for-desktop-down {
+          margin-right: 30px;
+        }
+
+        @include for-laptop-down {
+          margin-right: 20px;
+        }
+      }
+
+      .nav-list {
+        display: flex;
+        padding: 0 0 8px;
+
+        @include for-small-laptop-down {
+          display: none;
+        }
+
+        &.show {
+          display: flex;
+          position: absolute;
+          top: 55px;
+          margin-right: auto;
+          margin-left: auto;
+          left: 0;
+          right: 0;
+          padding: 0 15px;
+
+          @include for-phone-down {
+            width: 290px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 0;
+          }
+        }
+      }
+
+      .nav-item {
+        margin-left: 33px;
+
+        @include for-desktop-down {
+          margin-left: 20px;
+        }
+
+        @include for-laptop-down {
+          margin-left: 15px;
+        }
+
+        @include for-small-laptop-down {
+          margin-left: 0;
+          margin-right: 15px;
+        }
+
+        @include for-phone-down {
+          width: max-content;
+        }
+
+        &.active, &:hover {
+          border-bottom: 1.5px $white solid;
+        }
+
+        .nav-link {
+          font-size: 20px;
+          line-height: 42px;
+          color: $white!important;
+          font-weight: 400;
+
+          @include for-phone-down {
+            font-size: 16px;
+            line-height: 32px;
+          }
+        }
+      }
+    }
+
+    .btn-registration {
+      @include button(242px, 76px,38px, $white);
+      @include text-button(25px, "Montserrat", 400, $dodger-blue);
+      @include flex-position-items(flex, center, center);
+
+      @include for-laptop-down {
+        width: 175px;
+      }
+
+      &.desktop {
+        @include for-small-laptop-down {
+          display: none;
+        }
+      }
+
+      &.mobile {
+        display: none;
+
+        @include for-small-laptop-down {
+          display: flex;
+          height: 45px;
+        }
+
+        @include for-phone-down {
+          width: 100%;
+          margin-top: 5px;
+        }
+      }
+    }
+
+    .menu-mobile {
+      display: none;
+      width: 40px;
+      cursor: pointer;
+
+      @include for-small-laptop-down {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .line-white {
+        width: 100%;
+        height: 3px;
+        background: white;
+        margin-bottom: 10px;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

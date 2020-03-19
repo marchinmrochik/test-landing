@@ -1,0 +1,75 @@
+@mixin flex-position-items ($display, $justify-content, $align-items) {
+  display: $display;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin button($width, $height, $border-radius, $background-color) {
+  width: $width;
+  height: $height;
+  border-radius: $border-radius;
+  background-color: $background-color;
+}
+
+@mixin text-button($font-size, $font-family, $font-weight, $color) {
+  font-size: $font-size;
+  color:  $color;
+  font-family: $font-family, serif;
+  font-weight: $font-weight;
+}
+
+@mixin background($img-path, $position:0 0, $repeat: no-repeat) {
+  background: {
+    image: url($img-path);
+    position: $position;
+    repeat: $repeat;
+  }
+}
+
+@mixin background-size($width, $height, $bg-size) {
+  width: $width;
+  height: $height;
+  background-size: $bg-size;
+}
+
+@mixin text-style( $fs, $lh, $color, $ff, $fw) {
+  font-size: $fs;
+  line-height: $lh;
+  color: $color;
+  font-family: $ff, serif;
+  font-weight: $fw;
+}
+
+@mixin placeholder {
+  ::-webkit-input-placeholder {@content}
+  :-moz-placeholder           {@content}
+  ::-moz-placeholder          {@content}
+  :-ms-input-placeholder      {@content}
+}
+
+@mixin clip-path($params) {
+  clip-path: $params;
+  -webkit-clip-path: $params;
+  -o-clip-path: $params;
+  -ms-clip-path: $params;
+}
+
+@mixin for-desktop-down {
+  @media (max-width: 1200px) { @content; }
+}
+
+@mixin for-laptop-down {
+  @media (max-width: 1024px) { @content; }
+}
+
+@mixin for-small-laptop-down {
+  @media (max-width: 992px) { @content; }
+}
+
+@mixin for-phone-down {
+  @media (max-width: 768px) { @content; }
+}
+
+@mixin for-small-phone-down {
+  @media (max-width: 576px) { @content; }
+}

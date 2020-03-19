@@ -1,0 +1,675 @@
+@import "node_modules/normalize-scss/sass/normalize";
+
+body {
+  margin: 0;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 0;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+a {
+  text-decoration: none!important;
+}
+
+.show-popup {
+  overflow: hidden;
+}
+
+.max-width {
+  max-width: 1170px;
+
+  @include for-desktop-down {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+.m {
+  &x-auto {
+    margin: 0 auto;
+  }
+}
+
+.line-short-royal_blue  {
+  display: block;
+  width: 70px;
+  height: 4px;
+  background-color: $royal-blue;
+}
+
+#map {
+  width: 100%;
+  height: 400px;
+}
+
+.section {
+  &-intro {
+    @include background('../img/background-intro.svg', center);
+    padding-top: 235px;
+    padding-bottom: 85px;
+
+    .container-info {
+      @media (min-width: 1250px) {
+        align-items: center;
+      }
+
+      @include for-small-laptop-down {
+        justify-content: center;
+      }
+    }
+
+
+    @include for-desktop-down {
+      background-position: -100px;
+      background-size: cover;
+    }
+
+    @include for-small-laptop-down {
+      background-position: right;
+      padding-top: 170px;
+    }
+  }
+
+  &-about_app {
+    padding-top: 49px;
+    padding-bottom: 90px;
+  }
+
+  &-feature {
+    @include background('../img/background-feature.svg');
+    padding-top: 49px;
+    padding-bottom: 24rem;
+    background-color: $hint-of-red;
+
+    @include for-desktop-down {
+      padding-bottom: 17rem;
+    }
+
+    @include for-small-laptop-down {
+      padding-bottom: 13rem;
+    }
+
+    @include for-phone-down {
+      background-position: center;
+      background-size: cover;
+    }
+  }
+
+  &-price {
+    @extend .section-about_app;
+    padding-top: 49px;
+    background-color: $hint-of-red;
+
+    @include for-phone-down {
+      padding-top: 1px;
+    }
+  }
+
+  &-screenshots {
+    @extend .section-price;
+    background-color: $white
+  }
+
+  &-reviews {
+    margin-bottom: 90px;
+    padding-top: 62px;
+    padding-bottom: 90px;
+    background-image: linear-gradient(250deg, $dodger-blue 0%, $denim 100%);
+
+    .title-h2 {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+  }
+
+  &-contact_us {
+    padding: 28px 0 68px;
+    background: $alabaster;
+  }
+
+  &-map {
+    margin-top: 10px;
+  };
+}
+
+.container {
+  &-info {
+    @include flex-position-items(flex, space-between, start);
+  }
+
+  &-circle {
+    @include flex-position-items(flex, center, center);
+
+    &.medium {
+      width: 77px;
+      height: 77px;
+      border-radius: 39px;
+    }
+
+    &.small {
+      width: 56px;
+      height: 56px;
+      border-radius: 28px;
+      filter: drop-shadow(1.71px 4.698px 4px rgba(58,58,58,0.3));
+    }
+
+    &.white {
+      background: $white;
+
+      .features__icon {
+        font-size: 2.25rem;
+        color: $dodger-blue;
+      }
+    }
+
+    &.dodger-blue {
+      background: $dodger-blue;
+
+      .navigation__icon {
+        color: $white;
+        font-size: 2rem;
+      }
+    }
+  }
+
+  &-popup {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 5;
+    @include flex-position-items(flex, center, center);
+
+    &.show {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+.feature-list-items {
+  max-width: 700px;
+
+  .feature-item {
+    @include flex-position-items(flex, space-between, end);
+    margin-bottom: 70px;
+
+    @include for-small-phone-down {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .info-item {
+      max-width: 555px;
+      margin-left: 32px;
+
+      @include for-phone-down {
+        width: calc(100% - 140px);
+      }
+
+      @include for-small-phone-down {
+        margin-left: 0;
+        width: 100%;
+        margin-top: 25px;
+        text-align: center;
+      }
+
+      .title-item {
+        @include text-style(20px, 18px, $white, "Montserrat", 400);
+        margin-top: 0;
+        margin-bottom: 25px;
+      }
+
+      .description-item {
+        @include text-style(16px, 30px, $white, "Poppins", 400);
+        margin: 0;
+      }
+    }
+  }
+}
+
+.preview {
+  &-intro-mobile-img {
+    @include background('../img/phone-preview-intro.png');
+    @include background-size(350px, 715px, contain);
+    filter: drop-shadow(.684px 1.879px 10px rgba(34,31,31,.2));
+
+    @include for-desktop-down {
+      @include background-size(250px, 615px, contain);
+    }
+
+    @include for-small-laptop-down {
+      display: none;
+    }
+  }
+  &-feature-mobile-img {
+    @include background('../img/phone-preview-features.png');
+    @include background-size(352px, 710px, contain);
+
+    @include for-desktop-down {
+      @include background-size(252px, 610px, contain);
+    }
+
+    @include for-small-laptop-down {
+      display: none;
+    }
+  }
+}
+
+.block {
+  &-info {
+    max-width: 600px;
+    text-align: right;
+  }
+
+  &-title {
+    @extend .mx-auto;
+    max-width: 930px;
+    text-align: center;
+    margin-bottom: 85px;
+
+    .title-h1-contact_us {
+      margin-bottom: 0;
+    }
+
+    .title-h1-contact_us ~ p {
+      width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+
+      @include for-small-laptop-down {
+        width: 100%;
+      }
+    }
+  }
+
+  &-store-link {
+    @include flex-position-items(flex, flex-end, center);
+    margin-top: 60px;
+
+    @include for-small-phone-down {
+      flex-direction: column;
+    }
+  }
+
+  &-info_app {
+    @include flex-position-items(flex, space-between, center);
+
+    @include for-phone-down {
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .info-card {
+      width: 358px;
+      height: 391px;
+      filter: drop-shadow(0.684px 1.879px 10px rgba(34,31,31,0.2));
+      background-color: $white;
+      @include flex-position-items(flex, center, center);
+      flex-direction: column;
+
+      @include for-phone-down {
+        margin-bottom: 25px;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+
+      @include for-small-phone-down {
+        width: 300px;
+      }
+
+      &.dodger-blue {
+        .title-card {
+          color: $dodger-blue;
+        }
+
+        .bg-square {
+          background: $dodger-blue;
+        }
+
+        .card__icon {
+          color: $white;
+        }
+      }
+    }
+
+    .title-card {
+      @include text-style(24px, 36px, $scorpion, "Montserrat", 400);
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 25px;
+    }
+
+    .description-card {
+      @include text-style(16px, 30px, $dove-gray, "Poppins", 400);
+      text-align: center;
+      margin: 0;
+      padding: 0 30px;
+    }
+
+    .container-square {
+      position: relative;
+      @include flex-position-items(flex, center, center);
+      @extend .mx-auto;
+      width: 4.2rem;
+      height: 4.2rem;
+      margin-bottom: 48px;
+
+      .bg-square {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        background: $athens-gray;
+        transform: translate(-50%,-50%) rotate(45deg);
+      }
+
+      .card__icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        font-size: 2rem;
+        color: $dodger-blue;
+        transform: translate(-50%,-50%);
+        z-index: 2;
+      }
+    }
+  }
+
+  &-review {
+    border-radius: 3px;
+    border: 1px solid $white;
+    position: relative;
+    @include flex-position-items(flex!important, center, center);
+    flex-direction: column;
+    margin-top: 75px;
+    padding: 35px 0;
+
+    @include for-small-phone-down {
+      width: calc(100% - 2px)!important;
+    }
+
+    .photo {
+      width: 120px;
+      height: 120px;
+      position: absolute;
+      top: -75px;
+
+      img {
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+        @include clip-path(circle(50% at 50% 50%));
+      }
+    }
+
+    .name {
+      @include text-style(18px, 30px, $white, "Montserrat", 600);
+      margin-bottom: 5px;
+    }
+
+    .job {
+      @include text-style(15px, normal, $white, "Montserrat", 600);
+      margin: 0 0 42px;
+    }
+
+    .text {
+      @include text-style(15px, 26px, $white, "Poppins", 400);
+      max-width: 400px;
+      margin: 0 50px 0 75px;
+      text-align: center;
+      position: relative;
+
+      @include for-small-phone-down {
+        margin: 0 15px 0 35px;
+      }
+
+      .slide__icon {
+        font-size: 1.6875rem;
+
+        &--quote-left {
+          position: absolute;
+          top: -7px;
+          left: -25px;
+        }
+      }
+    }
+  }
+
+  &-pricing_plan {
+    @include flex-position-items(flex, space-between, center);
+
+    @include for-phone-down {
+      flex-direction: column;
+    }
+
+    .plan {
+      &-info {
+        width: 366px;
+        padding-top: 35px;
+        padding-bottom: 40px;
+        border-radius: 20px;
+        filter: drop-shadow(0.684px 1.879px 3px rgba(34,31,31,0.24));
+        background: $hint-of-red;
+        border: 2px solid $royal-blue;
+        @include flex-position-items(flex, center, center);
+        flex-direction: column;
+
+        @include for-phone-down {
+          margin-bottom: 25px;
+
+          &:last-of-type {
+            margin-bottom: 0;
+          }
+        }
+
+        @include for-small-phone-down {
+          width: 300px;
+        }
+
+        &.recommendations {
+          padding-bottom: 65px;
+          padding-top: 60px;
+          filter: drop-shadow(1.368px 3.759px 4px rgba(34,31,31,0.24));
+          background-image: linear-gradient(-90deg, $dodger-blue 0%, $denim 100%);
+
+          .btn-buy_plan {
+            border: none;
+          }
+
+          .plan__icon--check, .plan-type, .plan-price, .plan-detail, .plan-item {
+            color: $white;
+          }
+        }
+      }
+
+      &-type {
+        @include text-style(24px, 36px, $scorpion, "Montserrat", 600);
+        margin: 0 0 25px;
+      }
+
+      &-price {
+        @include text-style(36px, 36px, $dodger-blue, "Poppins", 400);
+        margin: 0;
+      }
+
+      &-detail {
+        @include text-style(18px, 36px, $scorpion, "Poppins", 600);
+      }
+
+      &-item {
+        @include flex-position-items(flex, center, center);
+        @include text-style(14px, 36px, $dove-gray, "Poppins", 400);
+
+        .plan__icon {
+          margin-right: 5px;
+
+          &--check {
+            color: $dodger-blue;
+          }
+          &--times {
+            color: $pomegranate;
+          }
+        }
+      }
+
+      &-list {
+        margin-top: 11px;
+        margin-bottom: 36px;
+      }
+    }
+
+    .btn-buy_plan {
+      @include button(205px, 55px, 27px, $white);
+      @include text-button(18px,"Poppins", 500, $dodger-blue);
+      border: 2px solid $royal-blue;
+    }
+  }
+
+  &-contact_us {
+    @include flex-position-items(flex, initial, end);
+
+    @include for-phone-down {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .info-link {
+      width: 400px;
+      background: $white;
+      padding: 50px 20px 25px;
+
+      @include for-small-laptop-down {
+        width: 470px;
+      }
+
+      @include for-phone-down {
+        width: calc(100% - 40px);
+        margin-bottom: 25px;
+      }
+    }
+
+    .item-link {
+      @include flex-position-items(flex, start, end);
+      margin-bottom: 25px;
+
+      .contact-information__icon {
+        margin-right: 1rem;
+        font-size: 1.25rem;
+        color: $royal-blue;
+      }
+
+      .type-link {
+        @include text-style(17px, 17px, $mine-shaft, "Poppins", 600);
+        margin: 0;
+      }
+
+      .text-link {
+        @include text-style(17px, 35px, $mine-shaft!important, "Poppins", 400);
+        margin-top: 5px;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &-popup {
+    width: 300px;
+    border-radius: 3px;
+    border: 1px solid $white;
+    background: $white;
+    padding: 25px;
+
+    .popup {
+      &-header {
+        text-align: right;
+
+        .close-popup {
+          @include text-style(30px, 19px, $mine-shaft, "Poppins", 400);
+          opacity: 0.7;
+          cursor: pointer;
+
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+
+      &-body {
+        padding: 15px 0;
+
+        p {
+          text-align: center;
+          margin: 0;
+          @include text-style(20px,  36px, $dove-gray, "Poppins", 500);
+        }
+      }
+
+      &-footer {
+        @include flex-position-items(flex, center, center);
+      }
+    }
+
+    .btn-close-popup {
+      @include button(157px, 44px, 0, $royal-blue);
+      @include text-button(16px, "Poppins", 500, $white);
+    }
+  }
+}
+
+.form {
+  margin-left: 15px;
+  width: 100%;
+
+  @include for-phone-down {
+    margin-left: 0;
+  }
+
+  input, textarea {
+    @include text-style(16px, 40px, $mine-shaft, "Poppins", 300);
+    padding: 0 15px;
+    width: calc(100% - 30px);
+    border: none;
+    outline: none!important;
+    margin-bottom: 25px;
+
+    @include placeholder {
+      @include text-style(16px, 40px, $silver-chalice, "Poppins", 300);
+    }
+  }
+
+  textarea {
+    height: 181px;
+    resize: none;
+  }
+
+  .btn-submit {
+    @include button(157px, 44px, 0, $royal-blue);
+    @include text-button(16px, "Poppins", 500, $white);
+  }
+}

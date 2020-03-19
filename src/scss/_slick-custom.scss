@@ -1,0 +1,85 @@
+$slick-font-path: "/node_modules/slick-carousel/slick/fonts/" !default;
+$slick-font-family: "slick" !default;
+$slick-loader-path: "/node_modules/slick-carousel/slick-carousel/slick/" !default;
+$slick-arrow-color: black !default;
+@import "~slick-carousel/slick/slick.scss";
+@import "~slick-carousel/slick/slick-theme.scss";
+
+%bg-size {
+  @include background-size(366px!important, 637px, cover);
+
+  @include for-small-phone-down {
+    width: 300px!important;
+    height: 563px;
+  }
+}
+
+.bg {
+  &-login {
+    @include background('../img/slider-map.png');
+    @extend %bg-size;
+  }
+
+  &-story {
+    @include background('../img/slider-map_2.png');
+    @extend %bg-size;
+  }
+
+  &-workout {
+    @include background('../img/slider-music_player.png');
+    @extend %bg-size;
+  }
+
+  &-map {
+    @include background('../img/slider-story.png');
+    @extend %bg-size;
+  }
+
+  &-music_player {
+    @include background('../img/slider-story_2.png');
+    @extend %bg-size;
+  }
+
+  &-map_2 {
+    @include background('../img/slider-workout.png');
+    @extend %bg-size;
+  }
+}
+
+.slick-initialized .slick-slide {
+  @include flex-position-items(flex, center, center);
+}
+
+.slider-app-navigate {
+  @include flex-position-items(flex, center, center);
+  margin-top: 45px;
+
+  button {
+    margin: 0 27px;
+  }
+}
+
+#slider-reviews {
+  .slick-arrow {
+    display: none!important;
+  }
+
+  .slick-dots {
+    bottom: -75px;
+
+    li {
+
+      &.slick-active {
+        button:before {
+          color: $wild-sand;
+        }
+      }
+
+      button:before {
+        font-size: 18px;
+        opacity: 1;
+        color: $alabaster;
+      }
+    }
+  }
+}
