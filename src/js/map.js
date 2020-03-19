@@ -2,7 +2,7 @@ const loadGoogleMapsApi = require('load-google-maps-api');
 
 class Map {
     static loadGoogleMapsApi() {
-        return loadGoogleMapsApi({ key: 'AIzaSyBqYVVsd6Xm1x5oGM2lXvwLLJXKeLUCSlM' });
+        return loadGoogleMapsApi({ key: '' });
     }
 
     static createMap(googleMaps, mapElement) {
